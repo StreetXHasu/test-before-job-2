@@ -18,7 +18,11 @@ APP_CODE_PATH_HOST=../www/
 COMPOSE_PATH_SEPARATOR=; 
 COMPOSE_PROJECT_NAME=Symfony
 PHP_VERSION=7.4
+PHP_FPM_INSTALL_APCU=true
+# mysql 8 версия тут в коробке так себе работает, поэтому наш вариант 5.7
+MYSQL_VERSION=5.7
 # любим дебаг и ставим true
+PHP_FPM_INSTALL_XDEBUG=true
 WORKSPACE_INSTALL_XDEBUG=true
 # У нас симфони, тут есть конфиг для nginx. Установит автоматически.
 WORKSPACE_INSTALL_SYMFONY=true
@@ -33,11 +37,12 @@ WORKSPACE_INSTALL_SYMFONY=true
 symfony check:requirements
 # всё ок
 symfony new ./
-# fatal: unable to auto-detect email address   exit status 128  
-# окей :) не важно. Едем дальше
+composer require symfony/webpack-encore-bundle
+yarn install
+yarn add @babel/preset-react@^7.0.0 --dev
 ```
 
-3. Делаем API
+3. Делаем фронт react
 
 ### Условия задачи:
 
